@@ -1,0 +1,33 @@
+﻿@model IEnumerable<btb5._1.Models.Product>
+
+<h2>Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Buy Price</th>
+            <th>Sell Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.BuyPrice</td> <!-- Hiển thị BuyPrice -->
+                <td>@product.SellPrice</td> <!-- Hiển thị SellPrice -->
+                <td>@product.Description</td>
+                <td>@product.Category?.Name</td>
+                <td>
+                    <a asp-action="Display" asp-route-id="@product.Id">View</a> |
+                    <a asp-action="Update" asp-route-id="@product.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
