@@ -1,33 +1,35 @@
 ﻿@model IEnumerable<btb5._1.Models.Product>
 
-<h2>Products</h2>
+<h2 class="text-center my-4">Danh sách sản phẩm</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Buy Price</th>
-            <th>Sell Price</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model)
-        {
-            <tr>
-                <td>@product.Name</td>
-                <td>@product.BuyPrice</td> <!-- Hiển thị BuyPrice -->
-                <td>@product.SellPrice</td> <!-- Hiển thị SellPrice -->
-                <td>@product.Description</td>
-                <td>@product.Category?.Name</td>
-                <td>
-                    <a asp-action="Display" asp-route-id="@product.Id">View</a> |
-                    <a asp-action="Update" asp-route-id="@product.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@product.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                @if (!string.IsNullOrEmpty(product.ImageUrl))
+                {
+                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;">
+                }
+                else
+                {
+                    <img src="/images/default-placeholder.png" class="card-img-top" alt="No image" style="height: 200px; object-fit: cover;">
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+
+                    <p class="card-text"><strong>Giá bán:</strong> @product.SellPrice.ToString("C")</p>
+                    <p class="card-text"><strong>Mô tả:</strong> @product.Description</p>
+                    <p class="card-text"><strong>Thể loại:</strong> @product.Category?.Name</p>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Display" asp-route-id="@product.Id" class="btn btn-success btn-sm">Xem</a>
+                        <a asp-action="Update" asp-route-id="@product.Id" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger btn-sm">Xóa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,15 +1,21 @@
-﻿@model btb5._1.Models.Product
+﻿<div class="product-details-container">
+    <div class="product-header">
+        <h2 class="product-title">@Model.Name</h2>
+        <h3 class="product-price">Sell Price: @Model.SellPrice.ToString("C")</h3>
+    </div>
 
-<h2>@Model.Name</h2>
+    <div class="product-content">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="product-image-wrapper">
+                <img src="@Model.ImageUrl" alt="Product Image" class="product-image" />
+            </div>
+        }
 
-<div>
-    <h3>Buy Price: @Model.BuyPrice</h3> <!-- Hiển thị giá mua -->
-    <h3>Sell Price: @Model.SellPrice</h3> <!-- Hiển thị giá bán -->
-    <p>@Model.Description</p>
-    @if (!string.IsNullOrEmpty(Model.ImageUrl))
-    {
-        <img src="@Model.ImageUrl" alt="Product Image" style="max-width:200px;" />
-    }
+        <p class="product-description">@Model.Description</p>
+    </div>
+
+    <div class="product-actions">
+        <a asp-action="Index" class="btn btn-back">Quay về</a>
+    </div>
 </div>
-
-<a asp-action="Index">Back to List</a>
