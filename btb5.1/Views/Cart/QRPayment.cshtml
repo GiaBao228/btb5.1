@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Thanh toán bằng QR";
+}
+
+<div class="container text-center">
+    <h2 class="my-4">Thanh toán bằng mã QR</h2>
+    <p><strong>Tổng tiền:</strong> @ViewBag.TotalAmount</p>
+    <p>Vui lòng quét mã QR bên dưới để thanh toán:</p>
+
+    <div>
+        <img src="@ViewBag.PaymentImageUrl" alt="QR Code" style="max-width: 300px; height: auto; border: 2px solid #ddd; border-radius: 10px;" />
+    </div>
+
+    <div class="mt-4">
+        <a href="/" class="btn btn-primary">Quay lại Trang chủ</a>
+    </div>
+</div>

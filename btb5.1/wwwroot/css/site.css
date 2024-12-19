@@ -333,3 +333,22 @@ p strong {
     margin-bottom: 15px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
+body {
+    background: linear-gradient(to bottom, #f9f9f9, #e6e6e6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.btn {
+    font-size: 1rem;
+    padding: 10px 15px;
+}

@@ -119,6 +119,24 @@ public JsonResult UpdateCart(int productId, int quantity)
 
     return Json(new { success = false });
 }
+        public IActionResult QRPayment()
+        {
+            // Lấy giỏ hàng từ session
+            var cartItems = GetCartItems();
+
+            // Tính tổng tiền từ giỏ hàng
+            var totalAmount = cartItems.Sum(c => c.Quantity * c.Price);
+
+            // URL của ảnh QR trong thư mục wwwroot/images
+            var paymentImageUrl = "/images/bank-qr.png.jpg";
+
+            // Truyền dữ liệu vào View
+            ViewBag.PaymentImageUrl = paymentImageUrl;
+            ViewBag.TotalAmount = totalAmount.ToString("C"); // Định dạng tiền tệ
+
+            return View();
+        }
 
     }
+
 }

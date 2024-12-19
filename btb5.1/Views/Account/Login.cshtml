@@ -1,22 +1,31 @@
 ﻿@{
-    ViewData["Title"] = "Đăng nhập";
+    ViewData["Title"] = "Login";
 }
 
-<h2>@ViewData["Title"]</h2>
-
-@if (ViewBag.Error != null)
-{
-    <div class="alert alert-danger">@ViewBag.Error</div>
-}
-
-<form method="post" asp-action="Login">
-    <div class="form-group">
-        <label for="Username">Tên đăng nhập</label>
-        <input name="username" class="form-control" placeholder="Nhập tên đăng nhập" />
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow" style="width: 400px;">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">Đăng Nhập</h3>
+            <form asp-action="Login" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="username" name="username" required />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" name="password" required />
+                </div>
+                @if (!string.IsNullOrEmpty(ViewBag.Error))
+                {
+                    <p class="text-danger">@ViewBag.Error</p>
+                }
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p>Chưa có tài khoản? <a asp-action="Register">Đăng ký ngay</a></p>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="Password">Mật khẩu</label>
-        <input name="password" type="password" class="form-control" placeholder="Nhập mật khẩu" />
-    </div>
-    <button type="submit" class="btn btn-primary">Đăng nhập</button>
-</form>
+</div>

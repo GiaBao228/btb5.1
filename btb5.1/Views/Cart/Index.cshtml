@@ -24,16 +24,15 @@ else
                 <tr>
                     <td>@item.ProductName</td>
                     <td>
-                        <input 
-                            type="number" 
-                            value="@item.Quantity" 
-                            min="1" 
-                            class="form-control update-cart" 
-                            data-product-id="@item.ProductId" 
-                            style="width: 70px; display: inline-block;" />
+                        <input type="number"
+                               value="@item.Quantity"
+                               min="1"
+                               class="form-control update-cart"
+                               data-product-id="@item.ProductId"
+                               style="width: 70px; display: inline-block;" />
                     </td>
                     <td>@item.Price.ToString("C")</td>
-                    <td class="item-total">@item.Total.ToString("C")</td>
+                    <td class="item-total">@((item.Quantity * item.Price).ToString("C"))</td>
                     <td>
                         <a asp-action="RemoveFromCart" asp-route-productId="@item.ProductId" class="btn btn-danger btn-sm">Xóa</a>
                     </td>
@@ -42,8 +41,8 @@ else
         </tbody>
     </table>
 
-    <p><strong>Tổng cộng: </strong> <span id="cart-total">@Model.Sum(i => i.Total).ToString("C")</span></p>
-    <a href="/Checkout" class="btn btn-success">Thanh toán</a>
+    <p><strong>Tổng cộng: </strong> <span id="cart-total">@Model.Sum(i => i.Quantity * i.Price).ToString("C")</span></p>
+    <a asp-action="QRPayment" class="btn btn-success">Thanh toán</a>
 }
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
