@@ -9,35 +9,65 @@
     <link rel="stylesheet" href="~/btb5._1.styles.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
 <body>
     <header>
+        <div class="form-group mt-3 d-flex justify-content-between">
+        </div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Nút Toggle cho màn hình nhỏ -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Add">Add</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Add">Categories</a>
-                        </li>
+
+                <!-- Navbar Content -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Menu Trái -->
+                    <ul class="navbar-nav me-auto">
+                        @if (Context.Session.GetString("Username") != null)
+                        {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Add">Add</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
+                                </li>
+                        }
+                    </ul>
+
+                    <!-- Kiểm tra trạng thái đăng nhập -->
+                    <ul class="navbar-nav ms-auto">
+                        @if (Context.Session.GetString("Username") == null)
+                        {
+                                <!-- Chưa đăng nhập -->
+                                <li class="nav-item">
+                                    <a asp-controller="Account" asp-action="Login" class="nav-link text-dark">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Account" asp-action="Register" class="nav-link text-dark">Register</a>
+                                </li>
+                        }
+                        else
+                        {
+                                <!-- Đã đăng nhập -->
+                                <li class="nav-item">
+                                    <span class="navbar-text me-3">Xin chào, @Context.Session.GetString("Username")</span>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-action="Logout" asp-controller="Account" class="btn btn-danger">Logout</a>
+                                </li>
+                        }
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
