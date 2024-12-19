@@ -1,4 +1,4 @@
-/* Global Styles */
+﻿/* Global Styles */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
@@ -227,4 +227,109 @@ body {
         font-size: 14px;
         padding: 10px 15px;
     }
+}
+/* Tổng quan */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Nền sáng */
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #343a40;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Bảng giỏ hàng */
+.table {
+    background-color: #ffffff; /* Màu nền của bảng */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    overflow: hidden;
+}
+
+    .table thead th {
+        background-color: #007bff; /* Nền tiêu đề bảng */
+        color: #ffffff; /* Màu chữ tiêu đề */
+        text-align: center;
+        padding: 15px;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .table tbody td {
+        padding: 15px;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #495057;
+    }
+
+/* Số lượng input */
+.update-cart {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    .update-cart:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    }
+
+/* Nút hành động */
+.btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+/* Tổng cộng */
+#cart-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+p strong {
+    font-size: 1rem;
+    color: #343a40;
+}
+
+/* Hiệu ứng */
+.table tbody tr:hover {
+    background-color: #f1f3f5; /* Highlight khi rê chuột */
+}
+
+.alert {
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: #856404;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }

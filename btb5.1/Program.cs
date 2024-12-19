@@ -28,6 +28,9 @@ builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
 // 4. Đăng ký Controller và Views
 builder.Services.AddControllersWithViews();
 
+// =============================
+// Build ứng dụng
+// =============================
 var app = builder.Build();
 
 // =============================
@@ -37,7 +40,7 @@ var app = builder.Build();
 // 1. Xử lý lỗi cho môi trường Production
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/Home/Error"); // Sử dụng trang lỗi mặc định
     app.UseHsts(); // HTTP Strict Transport Security
 }
 
